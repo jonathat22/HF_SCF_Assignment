@@ -30,7 +30,7 @@ def calc_nuclear_repulsion_energy(mol_):
     for i in range(2):
         for j in range(i + 1, 3):
             Enuc += (charges[i] * charges[j]) / distance_matrix[i][j]
-    print("Enuc is:", Enuc)
+
     return Enuc
 
 
@@ -64,9 +64,6 @@ def calc_hcore_matrix(Tuv_, Vuv_):
     """
 
     h_core = Tuv_ + Vuv_
-    print("h_core00 is:", h_core[0, 0])
-    print("h_core34 is:", h_core[3, 4])
-    print("h_core43 is:", h_core[4, 3])
     return h_core
 
 
@@ -90,9 +87,7 @@ def calc_fock_matrix(mol_, h_core_, er_ints_, Duv_):
         for nu in range(mol_.nao):
             Fuv[mu, nu] += ((Duv_*er_ints_[mu, nu]).sum()) \
             - 0.5 * (Duv_*er_ints_[mu, :, nu]).sum()
-    print("Fuv00 is:", Fuv[0, 0])
-    print("Fuv25 is:", Fuv[2, 5])
-    print("Fuv52 is:", Fuv[5, 2])
+
     return Fuv
 
 
@@ -153,5 +148,5 @@ def calc_tot_energy(Fuv_, Huv_, Duv_, Enuc_):
         Etot: the total energy of the molecule
     """
     Etot = 0.5 * (Duv_ * (Huv_ + Fuv_)).sum() + Enuc_
-    print("Etot is:", Etot)
+
     return Etot
