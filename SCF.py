@@ -20,7 +20,7 @@ def calc_nuclear_repulsion_energy(mol_):
 
     charges = mol_.atom_charges()
     coords = mol_.atom_coords()
-    Enuc = 0
+    Enuc = 0.0
     distance_matrix = np.zeros((3, 3), dtype=np.double)
 
     for i in range(3):
