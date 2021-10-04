@@ -9,7 +9,8 @@ import scipy as sp
 
 def calc_nuclear_repulsion_energy(mol_):
     """
-    calc_nuclear_repulsion_energy - calculates the n-e repulsion energy of molecule
+    calc_nuclear_repulsion_energy - calculates the n-e repulsion energy of
+    molecule
 
     Arguments:
         mol_: the PySCF molecule data structure created from Input
@@ -86,7 +87,7 @@ def calc_fock_matrix(mol_, h_core_, er_ints_, Duv_):
     for mu in range(mol_.nao):
         for nu in range(mol_.nao):
             Fuv[mu, nu] += ((Duv_*er_ints_[mu, nu]).sum()) \
-            - 0.5 * (Duv_*er_ints_[mu, :, nu]).sum()
+                - 0.5 * (Duv_*er_ints_[mu, :, nu]).sum()
 
     return Fuv
 
@@ -130,8 +131,10 @@ def form_density_matrix(mol_, mo_coeffs_):
 
     for mu in range(num_aos):
         for nu in range(num_aos):
-            Duv[mu, nu] = 2 * (mo_coeffs_[mu, 0:nelec] * mo_coeffs_[nu, 0:nelec]).sum()
+            Duv[mu, nu] = 2 * (mo_coeffs_[mu, 0:nelec] *
+                               mo_coeffs_[nu, 0:nelec]).sum()
     return Duv
+
 
 def calc_tot_energy(Fuv_, Huv_, Duv_, Enuc_):
     """
