@@ -51,19 +51,18 @@ def main():
     Your job will be to fill in the stubbed functions in SCF.py
 
     Step 1. Calculate the Electron Nuclear Repulsion Energy
-    Step 2. Calculate the Orthogonality Matrix (S^(-1/2))
-    Step 3. Calculate the Initial Hcore Matrix
-    Step 4. Calculate the Inital Density Matrix
-    Step 5. Start the SCF Procedure
-        Step 5a. Calculate the Fock Matrix
-        Step 5b. Solve Eigenvalues and Eigenvectors of Roothan Equations
-        Step 5c. Calculate the Total Energy of the Current Iteration
-        Step 5d. Caluate the new Density Matrix
-        Step 5e. Calulate the Energy Difference and RMS Difference of Density
-        Step 5f. Check for Convergence, if Converged, Exit
-        Step 5g. If not Converged, update Density Matrix and Energy and do
+    Step 2. Calculate the Initial Hcore Matrix
+    Step 3. Calculate the Inital Density Matrix
+    Step 4. Start the SCF Procedure
+        Step 4a. Calculate the Fock Matrix
+        Step 4b. Solve Eigenvalues and Eigenvectors of Roothan Equations
+        Step 4c. Calculate the Total Energy of the Current Iteration
+        Step 4d. Caluate the new Density Matrix
+        Step 4e. Calulate the Energy Difference and RMS Difference of Density
+        Step 4f. Check for Convergence, if Converged, Exit
+        Step 4g. If not Converged, update Density Matrix and Energy and do
                  another iteration
-    Step 6. Print out Final Total Energy for User
+    Step 5. Print out Final Total Energy for User
     """
 
     Enuc = SCF.calc_nuclear_repulsion_energy(mol_h2o)

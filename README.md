@@ -64,18 +64,17 @@ Main SCF Procedure
   Your job will be to fill in the stubbed functions in SCF.py
 
   - Step 1. Calculate the Electron Nuclear Repulsion Energy
-  - Step 2. Calculate the Orthogonality Matrix (S^(-1/2))
-  - Step 3. Calculate the Initial Hcore Matrix
-  - Step 4. Calculate the Initial Density Matrix
-  - Step 5. Start the SCF Procedure
-      - Step 5a. Calculate the Fock Matrix
-      - Step 5b. Solve Eigenvalues and Eigenvectors of Roothan Equations
-      - Step 5c. Calculate the Total Energy of the Current Iteration
-      - Step 5d. Calculate the new Density Matrix
-      - Step 5e. Calculate the Energy Difference and RMS Difference of Density
-      - Step 5f. Check for Convergence, if Converged, Exit
-      - Step 5g. If not Converged, update Density Matrix and Energy and do another iteration
-  - Step 6. Print out Final Total Energy for User
+  - Step 2. Calculate the Initial Hcore Matrix
+  - Step 3. Calculate the Initial Density Matrix
+  - Step 4. Start the SCF Procedure
+      - Step 4a. Calculate the Fock Matrix
+      - Step 4b. Solve Eigenvalues and Eigenvectors of Roothan Equations
+      - Step 4c. Calculate the Total Energy of the Current Iteration
+      - Step 4d. Calculate the new Density Matrix
+      - Step 4e. Calculate the Energy Difference and RMS Difference of Density
+      - Step 4f. Check for Convergence, if Converged, Exit
+      - Step 4g. If not Converged, update Density Matrix and Energy and do another iteration
+  - Step 5. Print out Final Total Energy for User
 
 ### The Input Parameters and the integrals
 
@@ -202,7 +201,7 @@ The HF Equations take the form of the eigenvector matrix Roothaan Equations:
 
 Where **F** is known as the Fock Matrix.
 
-##### Step 5a. Calculate the Fock Matrix
+##### Step 4a. Calculate the Fock Matrix
 
 *Function Stub*: `calc_fock_matrix`
 
@@ -240,7 +239,7 @@ which would be equivalent to:
 ```python
 for k in range(nao):
   for l in range(nao):
-    Fuv[0,0] += Duv[k,l]*eri[0,0,k,l]}
+    Fuv[0,0] += Duv[k,l]*eri[0,0,k,l]
 ```
 
 The second term: <img src="https://latex.codecogs.com/gif.latex?%5Csum_%7B%5Ckappa%20%5Clambda%7D%20D_%7B%5Ckappa%20%5Clambda%7D%20%28%5Cmu%20%5Ckappa%20%7C%20%5Cnu%20%5Clambda%29">, is the Exchange Term and has no classical analogue. It is a result of the Pauli principle in electrons of the same spin avoid each other.
@@ -258,7 +257,7 @@ would be equivalent to:
 ```python
 for k in range(nao):
   for l in range(nao):
-    Fuv[0,0] -= Duv[k,l]*eri(0,k,0,l)
+    Fuv[0,0] -= Duv[k,l]*eri[0,k,0,l]
 ```
 
 *Hint:*
@@ -274,7 +273,7 @@ For the second iteration:
   Fuv[2,5] = Fuv[5,2] = -0.1708886336992761
 ```
 
-##### Step 5b. Solve Eigenvalues and Eigenvectors of Roothaan Equations
+##### Step 4b. Solve Eigenvalues and Eigenvectors of Roothaan Equations
 
 *Function Stub*: `solve_Roothan_equations`
 
@@ -312,7 +311,7 @@ mol_c[0,:] = [-1.00154358e+00  2.33624458e-01  4.97111543e-16
               -4.99600361e-16]           
 ```
 
-##### Step 5c. Calculate the Total Energy of the Current Iteration
+##### Step 4c. Calculate the Total Energy of the Current Iteration
 
 *Function Stub*: `calc_tot_energy`
 
@@ -340,7 +339,7 @@ For the second iteration:
 Etot = -73.2857964211
 ```
 
-##### Step 5d. Calculate the new Density Matrix
+##### Step 4d. Calculate the new Density Matrix
 
 *Function Stub*: `form_density_matrix`
 
@@ -364,7 +363,7 @@ Duv_new[0,0] = 2.130023428655504
 Duv_new[2,5] = Duv_new[5,2] = -0.29226330209653156
 ```
 
-##### Step 5e. Calculate the Energy Difference and RMS Difference of Density
+##### Step 4e. Calculate the Energy Difference and RMS Difference of Density
 
 For each iteration, we will need to check the difference in the total energy and the RMS of the density with the previous iteration. As stated above, the formulas to compute are as follows:
 
@@ -382,13 +381,13 @@ For each iteration, we will need to check the difference in the total energy and
 
 These operations are already computed in `main.py` so there is no need for you to implement.
 
-##### Step 5f. Check for Convergence, if Converged, Exit
+##### Step 4f. Check for Convergence, if Converged, Exit
 
 In this step, we compare the difference to the convergence criteria to see if we are finished. If both values are below the thresholds, then we end the loop with a `break` and print the final result.
 
 This operation is already done in `main.py` and you do not need to implement.
 
-##### Step 5g. If not Converged, update Density Matrix and Energy and do another iteration
+##### Step 4g. If not Converged, update Density Matrix and Energy and do another iteration
 
 If the SCF procedure has not met convergence, then we need to update the Density Matrix with the newly calculated one and repeat another iteration.
 

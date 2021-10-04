@@ -1,5 +1,7 @@
 h5py==3.2.1
 numpy==1.21.2
-pyscf==1.7.6.
+pyscf==1.7.6
 scipy==1.7.1
-
+pytest
+pytest-cov
+pycodestyle
