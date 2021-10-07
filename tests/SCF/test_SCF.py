@@ -81,7 +81,6 @@ def test_calc_tot_energy(mol_h2o):
     h_core = SCF.calc_hcore_matrix(Tuv, Vuv)
     Fuv = SCF.calc_fock_matrix(mol_h2o, h_core, eri, Duv)
     mo_energies, mo_coeffs = SCF.solve_Roothan_equations(Fuv, Suv)
-    #Duv_new = SCF.form_density_matrix(mol_h2o, mo_coeffs)
     Enuc = SCF.calc_nuclear_repulsion_energy(mol_h2o)
 
     Etot = SCF.calc_tot_energy(Fuv, h_core, Duv, Enuc)
