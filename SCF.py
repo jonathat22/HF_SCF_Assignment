@@ -4,7 +4,7 @@ for the HF SCF Procedure
 """
 
 import numpy as np
-import scipy as sp
+from scipy.linalg import eigh
 
 
 def calc_nuclear_repulsion_energy(mol_):
@@ -106,7 +106,7 @@ def solve_Roothan_equations(Fuv_, Suv_):
         mo_coefficients: a matrix of the eigenvectors of the solution
     """
 
-    mo_energies, mo_coeffs = sp.linalg.eigh(Fuv_, Suv_)
+    mo_energies, mo_coeffs = eigh(Fuv_, Suv_)
     return mo_energies.real, mo_coeffs.real
 
 
