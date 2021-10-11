@@ -18,7 +18,6 @@ def calc_nuclear_repulsion_energy(mol_):
     Returns:
         Enuc: The n-e repulsion energy
     """
-
     charges = mol_.atom_charges()
     coords = mol_.atom_coords()
     Enuc = 0.0
@@ -87,7 +86,6 @@ def calc_fock_matrix(mol_, h_core_, er_ints_, Duv_):
         for nu in range(mol_.nao):
             Fuv[mu, nu] += ((Duv_*er_ints_[mu, nu]).sum()) \
                 - 0.5 * (Duv_*er_ints_[mu, :, nu]).sum()
-
     return Fuv
 
 
