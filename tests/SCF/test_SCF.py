@@ -4,12 +4,6 @@ import pickle
 from mol import mol
 
 
-Suv = pickle.load(open("suv.pkl", "rb"))
-Tuv = pickle.load(open("tuv.pkl", "rb"))
-eri = pickle.load(open("eri.pkl", "rb"))
-Vuv = pickle.load(open("vuv.pkl", "rb"))
-
-
 def test_calc_nuclear_repulsion_energy(mol_h2o):
     assert SCF.calc_nuclear_repulsion_energy(mol_h2o) == 8.00236706181077
     "Nuclear Repulsion Energy Test (h2o) Failed"
