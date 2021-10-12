@@ -12,7 +12,7 @@ Vuv = pickle.load(open("real_vuv.pkl", "rb"))
 
 def test_calc_nuclear_repulsion_energy(mol_h2o):
     assert SCF.calc_nuclear_repulsion_energy(mol_h2o) == 8.00236706181077
-    "Nuclear Repulsion Energy Test (H2O) Failed"
+    "Nuclear Repulsion Energy Test (h2o) Failed"
 
 
 def test_calc_initial_density(mol_h2o):
